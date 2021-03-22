@@ -2,4 +2,4 @@
 
 My learning application in which I created a plugin that renders select with pre-established elements.
 
-Used technologies and tools: SCSS, Vanilla JS, WebStorm, Parcel, Firebase (for hosting).
+Used technologies and tools: SCSS, BEM, Vanilla JS, WebStorm, Parcel, Firebase (for hosting).
