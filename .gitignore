@@ -1,4 +1,6 @@
 /.cache
 /.idea
 /node_modules
-package-lock.json
+/.firebase
+.firebaserc
+firebase.json
