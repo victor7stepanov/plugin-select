@@ -137,7 +137,7 @@ var getTemplate = function getTemplate() {
   var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var placeholder = arguments.length > 1 ? arguments[1] : undefined;
   var selectedId = arguments.length > 2 ? arguments[2] : undefined;
-  var text = placeholder || 'Выберите пожалуйста элемент';
+  var text = placeholder || 'Please select item';
   var items = data.map(function (item) {
     var cls = '';
 
@@ -232,6 +232,16 @@ var Select = /*#__PURE__*/function () {
       this.$arrow.classList.remove('fa-chevron-up');
     }
   }, {
+    key: "clear",
+    value: function clear() {
+      var _this$options = this.options,
+          placeholder = _this$options.placeholder,
+          data = _this$options.data;
+      this.$el.innerHTML = getTemplate(data, placeholder);
+
+      _classPrivateMethodGet(this, _setup, _setup2).call(this);
+    }
+  }, {
     key: "destroy",
     value: function destroy() {
       this.$el.removeEventListener('click', this.clickHandler);
@@ -245,9 +255,9 @@ var Select = /*#__PURE__*/function () {
 exports.Select = Select;
 
 function _render2() {
-  var _this$options = this.options,
-      placeholder = _this$options.placeholder,
-      data = _this$options.data;
+  var _this$options2 = this.options,
+      placeholder = _this$options2.placeholder,
+      data = _this$options2.data;
   this.$el.classList.add('select');
   this.$el.innerHTML = getTemplate(data, placeholder, this.selectedId);
 }
@@ -338,7 +348,7 @@ var _select = require("./select/select");
 require("./select/style.scss");
 
 var select = new _select.Select('#select', {
-  placeholder: 'Выберите пожалуйста технологию',
+  placeholder: 'Please select technology',
   // selectedId: '4',
   data: [{
     id: '1',
@@ -361,6 +371,28 @@ var select = new _select.Select('#select', {
   }],
   onSelect: function onSelect(item) {
     console.log('Selected Item', item);
+  }
+});
+var button = document.querySelector('#actions');
+button.addEventListener('click', function (event) {
+  var typeOfButton = event.target.dataset.type;
+
+  switch (typeOfButton) {
+    case 'open':
+      select.open();
+      break;
+
+    case 'set':
+      select.select('5');
+      break;
+
+    case 'clear':
+      select.clear();
+      break;
+
+    case 'destroy':
+      select.destroy();
+      break;
   }
 });
 },{"./select/select":"select/select.js","./select/style.scss":"select/style.scss"}],"C:/Users/1/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -391,7 +423,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51425" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54247" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,5 +1,5 @@
 const getTemplate = (data = [], placeholder, selectedId) => {
-    let text = placeholder || 'Выберите пожалуйста элемент'
+    let text = placeholder || 'Please select item'
 
     const items = data.map(item => {
         let cls = ''
@@ -99,6 +99,12 @@ export class Select {
         this.$el.classList.remove('open')
         this.$arrow.classList.add('fa-chevron-down')
         this.$arrow.classList.remove('fa-chevron-up')
+    }
+
+    clear() {
+        const {placeholder, data} = this.options
+        this.$el.innerHTML = getTemplate(data, placeholder)
+        this.#setup()
     }
 
     destroy() {
